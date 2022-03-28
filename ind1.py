@@ -18,21 +18,24 @@ class InRange:
 
     def read(self):
         self.first = float(input("Введите первое число диапазона: "))
-        self.second = int(input("Введите второе число диапазона: "))
+        self.second = float(input("Введите второе число диапазона: "))
 
     def display(self):
-        if rangecheck(self):
-            print("Число принадлежит диапазону")
-        else:
-            print("Число не принадлежит диапазону")
+        print(f"Число принадлежит диапазону [{self.first}, {self.second}):")
+
+    def rangecheck(self, x):
+        return self.first <= x < self.second
 
 
-def rangecheck(self):
-    x = float(input("Введите число: "))
-    return self.first <= x < self.second
+def make_rangecheck(first, second):
+    if type(first) and type(second) != float and type(first) and type(second) != int:
+        raise ValueError()
+    else:
+        return InRange(first, second)
 
 
 if __name__ == "__main__":
     in_range = InRange()
-    in_range.read()
-    in_range.display()
+    m = make_rangecheck(10, 100)
+    m.display()
+    print(m.rangecheck(16))
